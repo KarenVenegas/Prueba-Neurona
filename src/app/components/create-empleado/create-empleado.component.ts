@@ -12,6 +12,7 @@ export class CreateEmpleadoComponent  {
   constructor(private userSvc: UserService){
     this.formulario = new FormGroup({
       nombre: new FormControl(),
+      apellido: new FormControl(),
       cedula: new FormControl(),
     })
   }

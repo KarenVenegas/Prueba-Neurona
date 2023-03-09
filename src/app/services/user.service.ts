@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { collectionData, Firestore, collection, addDoc} from '@angular/fire/firestore';
+import { collectionData, Firestore, collection, addDoc, doc, deleteDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Usuario from '../interfaces/user.interface';
+
 
 
 @Injectable({
@@ -18,5 +19,9 @@ export class UserService {
   getUsuarios():Observable<Usuario[]>{
     const usuarioRef= collection(this.firestore, 'usuarios');
     return collectionData(usuarioRef,{idField:'id'}) as Observable<Usuario[]>;
+  }
+  deleteUsuario(usuario:Usuario){
+    const usuarioDocRef = doc(this.firestore,`usuarios/${usuario.id}`);
+    return deleteDoc(usuarioDocRef);
   }
 }

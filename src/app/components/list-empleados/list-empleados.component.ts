@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import Usuario from 'src/interfaces/usuario.interface';
+import Usuario from 'src/app/interfaces/user.interface';
+
 
 @Component({
   selector: 'app-list-empleados',
@@ -15,6 +16,7 @@ export class ListEmpleadosComponent implements OnInit{
    ){
     this.usuarios =[{
       nombre:'Karen',
+      apellido: 'Venegas',
       cedula: 1234
     }];
   }
@@ -23,6 +25,10 @@ export class ListEmpleadosComponent implements OnInit{
     this.userSvc.getUsuarios().subscribe(usuarios=>{
       this.usuarios = usuarios;
     });
+  }
+  async onClickDelete(usuario: Usuario){
+   const response = await this.userSvc.deleteUsuario(usuario);
+   console.log(response);
   }
 }
 
