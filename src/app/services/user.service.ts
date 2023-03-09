@@ -29,6 +29,21 @@ export class UserService {
   AddAdmin({ email, password }: any) {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
-
-
+  login({ email, password }: any) {
+    return signInWithEmailAndPassword(this.auth, email, password)
+      .then(() => {
+      })
+      .catch(error => {
+        let errorMessage = 'Usuario y contraseña invalidos';
+        if (error.code === 'auth/wrong-password') {
+          errorMessage = 'Contraseña incorrecta';
+        } else if (error.code === 'auth/user-not-found') {
+          errorMessage = 'Usuario no encontrado';
+        }
+        throw new Error(errorMessage);
+      });
+  }
+  logout() {
+    return signOut(this.auth);
+  }
 }

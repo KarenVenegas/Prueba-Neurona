@@ -8,8 +8,9 @@ import { MainComponent } from './components/main/main.component';
 import { CreateAdminComponent } from './components/create-admin/create-admin.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent },
+  { path: 'main', component: MainComponent, ...canActivate(() => redirectUnauthorizedTo(['/login']))  },
   { path: 'create-empleado', component: CreateEmpleadoComponent },
   { path: 'create-admin', component: CreateAdminComponent },
   { path: 'list-empleados', component: ListEmpleadosComponent },
