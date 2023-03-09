@@ -8,12 +8,12 @@
                     <div>
                       <input type="text" class="form-control form-control-lg" placeholder="Nombre" formControlName="nombre">
                       <input type="text" class="form-control form-control-lg mt-2" placeholder="Apellido" formControlName="apellido" >
-                      <input type="text" class="form-control form-control-lg mt-2" placeholder="Cedula" formControlName="cedula" >
+                      <input type="number" class="form-control form-control-lg mt-2" placeholder="Cedula" formControlName="cedula" >
 
                     </div>
-                      <div class="mt-3 ">
-                          <button type="text" class="btn-dark btn mr-3" >Volver</button>
-                          <button type="submit"  class="btn-info btn" (click)="onSubmit()" routerLink="/list-empleados"> Enviar</button>
+                      <div class="mt-3" >
+                          <button type="text" class="btn-dark btn mr-3" routerLink="/main">Volver</button>
+                          <button type="submit"  class="btn-dark btn" (click)="onSubmit()" routerLink="/main"> Enviar</button>
                       </div>
                   </form>
               </div>

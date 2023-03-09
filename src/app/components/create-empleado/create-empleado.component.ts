@@ -21,6 +21,7 @@ export class CreateEmpleadoComponent  {
   }
   async onSubmit(){
     const response = await this.userSvc.addUsuario(this.formulario.value);
+    alert('Funcionario creado correctamente')
   }
 
 
