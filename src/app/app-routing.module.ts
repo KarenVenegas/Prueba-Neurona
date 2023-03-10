@@ -6,7 +6,6 @@ import { ListEmpleadosComponent } from './components/list-empleados/list-emplead
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { CreateAdminComponent } from './components/create-admin/create-admin.component';
-import { EmpleadoComponent } from './components/empleado/empleado.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -15,7 +14,6 @@ const routes: Routes = [
   { path: 'create-empleado', component: CreateEmpleadoComponent },
   { path: 'create-admin', component: CreateAdminComponent },
   { path: 'list-empleados', component: ListEmpleadosComponent },
-  { path: 'edit-empleado/:id', component: CreateEmpleadoComponent},
   { path: '**', redirectTo: 'main', pathMatch: 'full' }
 ];
 

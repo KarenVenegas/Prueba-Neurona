@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,7 +13,12 @@ export class CreateEmpleadoComponent implements OnInit {
   formulario: FormGroup;
   loading = false;
 
-  constructor(private userSvc: UserService, private fb: FormBuilder, private toastr: ToastrService, private router:Router){
+  constructor(private userSvc: UserService,
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private router:Router,
+    private aRoute: ActivatedRoute){
+
     this.formulario = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],

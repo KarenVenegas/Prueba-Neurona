@@ -19,7 +19,6 @@
                     <td>{{usuario.apellido}}</td>
                     <td>{{usuario.cedula}}</td>
                     <td>
-                      <i class="fas fa-edit fa-lg text-info mr-2" [routerLink]="['/edit-empleado', usuario.id]"></i>
                       <i class="fas fa-trash-alt fa-lg text-danger" (click)="onClickDelete(usuario)"></i>
                     </td>
                   </tr>
@@ -31,4 +30,4 @@
 </div>
 
 
-<!-- <button class="btn btn-outline-danger" (click)="onClickDelete(place)">Borrar</button> -->
+

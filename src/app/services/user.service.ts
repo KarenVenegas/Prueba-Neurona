@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore, collection, addDoc, doc, deleteDoc, query, where, getDocs} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Auth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 import Usuario from '../interfaces/user.interface';
 

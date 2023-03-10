@@ -4,13 +4,8 @@ import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
-  template: `
-  <nav class="navbar navbar-dark bg-dark">
-  <button class="btn btn-outline-danger " routerLink="/create-admin">Agregar administrador</button>
-  <span class="navbar-brand mb-0 h1">App Empleados - Angular y Firebase</span>
-  <button (click)="onClick()" class="btn btn-outline-danger ">Logout</button>
-</nav>
-`
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
