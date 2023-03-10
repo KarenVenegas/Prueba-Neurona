@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,22 +9,36 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './create-empleado.component.html',
   styleUrls: ['./create-empleado.component.scss']
 })
-export class CreateEmpleadoComponent  {
+export class CreateEmpleadoComponent implements OnInit {
   formulario: FormGroup;
-  constructor(private userSvc: UserService){
-    this.formulario = new FormGroup({
-      nombre: new FormControl(),
-      apellido: new FormControl(),
-      cedula: new FormControl(),
+  loading = false;
+
+  constructor(private userSvc: UserService, private fb: FormBuilder, private toastr: ToastrService, private router:Router){
+    this.formulario = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      cedula: ['', Validators.required],
     })
   }
   ngOnInit():void{
 
   }
   async onSubmit(){
-    const response = await this.userSvc.addUsuario(this.formulario.value);
-    alert('Funcionario creado correctamente')
+    try {
+      this.loading = true;
+      const response = await this.userSvc.addUsuario(this.formulario.value);
+      this.toastr.success('El empleado fue registrado con éxito','Empleado Registrado',{positionClass:'toast-bottom-right'});
+      this.router.navigate(['/main']);
+    } catch (error: any) {
+      if (error.message === 'Todos los campos son obligatorios.') {
+        this.toastr.error(error.message, 'Error al agregar el usuario', { positionClass: 'toast-bottom-right' });
+      } else if (error.message === 'La cédula de identidad ya está registrada.') {
+        this.toastr.error(error.message, 'Error al agregar el usuario', { positionClass: 'toast-bottom-right' });
+      } else {
+        this.toastr.error('Ocurrió un error al agregar el usuario', 'Error', { positionClass: 'toast-bottom-right' });
+      }
+    } finally {
+      this.loading = false;
   }
-
-
+}
 }
