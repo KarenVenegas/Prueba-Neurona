@@ -20,3 +20,6 @@ El proyecto fue generado con Angular y Firebase, permite el login con un usuario
 •	Package Manager: npm 9.5.1
 •	Conexión a internet para inicializar el servidor local.
 
+
+link del proyecto en firebase: https://gdi-prueba-gerente.web.app/login
+
